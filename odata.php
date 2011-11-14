@@ -9,7 +9,7 @@
 *
 * The oData API let's you search for items available via the Greek Price API
 * using the query syntax and formats in the Open Data Protocol. Most common 
-* oData scenarios are based on structured databases where resources, collections
+* oData scenarios are based on structured databases where collections, collections
 * are easily identified. In this particular scenario there are some restrictions 
 * from the native API side like retrieving items as root collection without
 * providing a keyword with at least two characters. To learn more about the oData
@@ -29,11 +29,16 @@ class Odata
 {
 	private static $base_url = 'http://epriceservice.cloudapp.net/PriceServices.svc/';
 
-	public function api_call($name, $id=NULL, $resource=NULL)
+	public function api_call($name, $id=NULL, $collection=NULL)
 	{
 		if (! empty($id) )
 		{
-			$name = "$name($id)";
+			$name .= "($id)";
+
+			if (! empty($collection) )
+			{
+				$name .= "/$collection";
+			}
 		}
 
 		$requestUrl = sprintf('%s%s?$format=json', self::$base_url, $name);
@@ -61,45 +66,45 @@ class Odata
 	}
 
 	// Category - Defines a product category for each product.
-	public function category($id=NULL, $resource=NULL)
+	public function category($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('Category', $id, $resource);
+		return $this->api_call('Category', $id, $collection);
 	}
 
 	// Poi - Defines a point of interest that currently can either be a supermarket or a gas station.
-	public function poi($id=NULL, $resource=NULL)
+	public function poi($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('Poi', $id, $resource);
+		return $this->api_call('Poi', $id, $collection);
 	}
 
 	// PoiCompany - Declares the association of each company to specific Poi's, usually supermarket chains or gas stations of a particular brand. 
-	public function poi_company($id=NULL, $resource=NULL)
+	public function poi_company($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('PoiCompany', $id, $resource);
+		return $this->api_call('PoiCompany', $id, $collection);
 	}
 	
 	// PoiProductPrice - Cardinality defining the association of each product's price in a particular point of sale. For instance specific milk in a particular supermarket.
-	public function poi_product_price($id=NULL, $resource=NULL)
+	public function poi_product_price($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('PoiProductPrice', $id, $resource);
+		return $this->api_call('PoiProductPrice', $id, $collection);
 	}
 
 	// Product - A product description. 
-	public function product($id=NULL, $resource=NULL)
+	public function product($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('Product', $id, $resource);
+		return $this->api_call('Product', $id, $collection);
 	}
 
 	// Product - Associates products with companies. 
-	public function product_company($id=NULL, $resource=NULL)
+	public function product_company($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('ProductCompany', $id, $resource);
+		return $this->api_call('ProductCompany', $id, $collection);
 	}
 	
 	// Territory - Describes areas like municipalities, counties and prefectures. Includes self joint references.
-	public function territory($id=NULL, $resource=NULL)
+	public function territory($id=NULL, $collection=NULL)
 	{
-		return $this->api_call('Territory', $id, $resource);
+		return $this->api_call('Territory', $id, $collection);
 	}
 }
 
