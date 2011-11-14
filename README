@@ -1,0 +1,16 @@
+oData.gr API for CodeIgniter
+
+This CI library is simply a wrapper class for oData API.
+
+The oData API let's you search for items available via the Greek Price API using the query syntax and formats in the Open Data Protocol. Most common oData scenarios are based on structured databases where resources, collections are easily identified. In this particular scenario there are some restrictions from the native API side like retrieving items as root collection without providing a keyword with at least two characters. To learn more about the oData protocol, you can browse the oData site.
+
+http://odata.gr
+http://odata.niobiumlabs.com/howto.html
+
+NOTE: Currently no parameters are available.
+
+--------------------------------------------
+
+In order to use it,
+just put the odata.php file on CI's libraries folder
+and load it wherever you want.
