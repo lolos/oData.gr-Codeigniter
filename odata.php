@@ -19,7 +19,7 @@
 * @package CodeIgniter
 * @subpackage Libraries
 * @author Vasilis Lolos <vlolos@me.com>
-* @copyright Copyright (c) 2011, https://github.com/lolos/BigBlueButton-CodeIgniter
+* @copyright Copyright (c) 2011, https://github.com/lolos/oData.gr-Codeigniter/
 *
 */
 
